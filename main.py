@@ -1,3 +1,3 @@
 from scrapy.cmdline import execute
 
-execute(['scrapy', 'crawl', 'scrapy_spider'])
+execute(['scrapy', 'crawl', 'medical_journal'])

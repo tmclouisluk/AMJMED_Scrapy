@@ -1,2 +1,4 @@
 venv/
 .idea/
+.scrapy/
+web_crawler/__pycache__/
