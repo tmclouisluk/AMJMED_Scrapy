@@ -1,21 +1,25 @@
 import scrapy
-
+from selenium import webdriver
 
 class MedicalJournalSpider(scrapy.Spider):
     name = "medical_journal"
+    urls = [
+        'http://www.amjmed.com/issues',
+    ]
+
+    def __init__(self):
+        self.browser = webdriver.Chrome(executable_path='C:\chromedriver.exe')
+
+    def __del__(self):
+        self.browser.close()
 
     def start_requests(self):
-        urls = [
-            'http://www.amjmed.com/issues',
-        ]
-        for i, url in enumerate(urls):
-            req = scrapy.Request(url=url, callback=self.parse)
-            #req.headers['Cookie'] = 'js_enabled=true; is_cookie_active=true;'
-            yield req
+        self.browser.get(self.urls[0])
+        req = scrapy.Request(url=self.urls[0], callback=self.parse)
+        yield req
 
     def parse(self, response):
-
-        list = response.css('.width_1_2')
+        print (self.browser.page_source)
         #list = list[0]
 
     #def parse_journal_list(self, response):
