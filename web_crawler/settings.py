@@ -30,7 +30,7 @@ ITEM_PIPELINES = {
 }
 
 MONGO_URI = 'localhost'
-MONGO_DB = 'medical_journal'
+MONGO_DB = 'local'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False

@@ -20,7 +20,7 @@ class MedicalJournalSpider(scrapy.Spider):
             #yield response.follow(all_links[0], self.parseIssues, meta=dict(ChromeJS=True))
             for href in all_links:
                 #next_page = response.urljoin(href)
-                yield response.follow(href, self.parseArticle, meta=dict(ChromeJS=True))
+                yield response.follow(href, self.parseIssues, meta=dict(ChromeJS=True))
 
         # \32 f1be74d-242b-49c7-ade4-2ab90069ea88 > div > div > div > div:nth-child(1)
 
@@ -51,5 +51,6 @@ class MedicalJournalSpider(scrapy.Spider):
                 'title': title,
                 'authors': authors,
                 'pubDate': pubDate,
-                'content': content
+                'content': content,
+                'collection': 'medical_journal'
             }

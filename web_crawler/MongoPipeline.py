@@ -14,7 +14,7 @@ class MongoPipeline(object):
         self.db = self.client[self.mongo_db]
 
     def process_item(self, item, spider):
-        self.db[item.collection].insert(dict(item))
+        self.db[item.get('collection')].insert(dict(item))
         return item
 
     def close_spider(self, spider):
