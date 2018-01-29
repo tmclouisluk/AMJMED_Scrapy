@@ -46,6 +46,8 @@ class MedicalJournalSpider(scrapy.Spider):
             title = response.css(".articleTitle::text").extract_first()
             authors = response.css(".author a.openAuthorLayer::text").extract()
             pubDate = response.css(".pubDatesRow::text").extract_first()
+            if pubDate is None:
+                pubDate = response.css(".artBib a::text").extract_first()
             content = "".join(response.css(".fullText .body .content p::text").extract())
             yield {
                 'title': title,
