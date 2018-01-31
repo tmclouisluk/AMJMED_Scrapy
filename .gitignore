@@ -3,3 +3,4 @@ venv/
 .scrapy/
 web_crawler/__pycache__/
 web_crawler/spiders/__pycache__/
+debug.log
